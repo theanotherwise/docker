@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  ui:
+    container_name: ui
+    build:
+      context: ./ui
+      args:
+        DB_SRV_ADDR: db
+        ZBX_SRV_ADDR: srv
+    ports:
+      - "8080:80"
+    networks:
+      - zabbix
+  db:
+    container_name: db
+    build: 
+      context: ./db
+    networks:
+      - zabbix
+  srv:
+    container_name: srv
+    build:
+      context: ./srv
+      args:
+        DB_SRV_ADDR: db
+    networks:
+      - zabbix
+networks:
+  zabbix:
+    ipam:
+      config:
+        - subnet: 172.20.10.0/24

@@ -1,0 +1,20 @@
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+
+processors:
+  - add_docker_metadata: ~
+
+output.elasticsearch:
+  hosts: '${ELASTICSEARCH_HOSTS:elasticsearch:9200}'
+  indices:
+    - index: "filebeat-httpd-access.log-%{+yyyy-MM-dd}"
+      when.equals:
+        event.module: "apache"
+
+setup.template:
+  name: 'filebeat-httpd-access.log'
+  pattern: 'filebeat-httpd-access.log-*'
+  enabled: false
+
+setup.ilm.enabled: false
