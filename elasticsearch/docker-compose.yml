@@ -628,9 +628,9 @@ services:
       - ./files/logstash-shipper/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
       - ./files/logstash-shipper/pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
     depends_on:
-      - es04
-      - es05
-      - es06
+      - kafka1
+      - kafka2
+      - kafka3
   ls02-shipper:
     image: docker.elastic.co/logstash/logstash:7.7.0
     container_name: ls02-shipper
@@ -640,9 +640,9 @@ services:
       - ./files/logstash-shipper/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
       - ./files/logstash-shipper/pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
     depends_on:
-      - es04
-      - es05
-      - es06
+      - kafka1
+      - kafka2
+      - kafka3
   ls03-shipper:
     image: docker.elastic.co/logstash/logstash:7.7.0
     container_name: ls03-shipper
@@ -652,9 +652,9 @@ services:
       - ./files/logstash-shipper/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
       - ./files/logstash-shipper/pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
     depends_on:
-      - es04
-      - es05
-      - es06
+      - kafka1
+      - kafka2
+      - kafka3
   zoo1:
     image: zookeeper
     container_name: zoo1
@@ -696,6 +696,9 @@ services:
       - zoo1
       - zoo2
       - zoo3
+      - ls01-indexer
+      - ls02-indexer
+      - ls03-indexer
   kafka2:
     image: wurstmeister/kafka
     container_name: kafka2
@@ -713,6 +716,9 @@ services:
       - zoo1
       - zoo2
       - zoo3
+      - ls01-indexer
+      - ls02-indexer
+      - ls03-indexer
   kafka3:
     image: wurstmeister/kafka
     container_name: kafka3
@@ -730,27 +736,42 @@ services:
       - zoo1
       - zoo2
       - zoo3
-  #  ls01-indexer:
-  #    image: docker.elastic.co/logstash/logstash:7.7.0
-  #    container_name: ls01-indexer
-  #    networks:
-  #      - elasticsearch
-  #    volumes:
-  #      - ./files/logstash-indexer/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
-  #  ls02-indexer:
-  #    image: docker.elastic.co/logstash/logstash:7.7.0
-  #    container_name: ls02-indexer
-  #    networks:
-  #      - elasticsearch
-  #    volumes:
-  #      - ./files/logstash-indexer/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
-  #  ls03-indexer:
-  #    image: docker.elastic.co/logstash/logstash:7.7.0
-  #    container_name: ls03-indexer
-  #    networks:
-  #      - elasticsearch
-  #    volumes:
-  #      - ./files/logstash-indexer/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ls01-indexer
+      - ls02-indexer
+      - ls03-indexer
+  ls01-indexer:
+    image: docker.elastic.co/logstash/logstash:7.7.0
+    container_name: ls01-indexer
+    networks:
+      - elasticsearch
+    volumes:
+      - ./files/logstash-indexer/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+    depends_on:
+      - es04
+      - es05
+      - es06
+  ls02-indexer:
+    image: docker.elastic.co/logstash/logstash:7.7.0
+    container_name: ls02-indexer
+    networks:
+      - elasticsearch
+    volumes:
+      - ./files/logstash-indexer/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+    depends_on:
+      - es04
+      - es05
+      - es06
+  ls03-indexer:
+    image: docker.elastic.co/logstash/logstash:7.7.0
+    container_name: ls03-indexer
+    networks:
+      - elasticsearch
+    volumes:
+      - ./files/logstash-indexer/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+    depends_on:
+      - es04
+      - es05
+      - es06
   kibana:
     image: docker.elastic.co/kibana/kibana:7.7.0
     container_name: kibana
