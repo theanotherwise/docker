@@ -655,27 +655,27 @@ services:
       - es04
       - es05
       - es06
-#  ls01-indexer:
-#    image: docker.elastic.co/logstash/logstash:7.7.0
-#    container_name: ls01-indexer
-#    networks:
-#      - elasticsearch
-#    volumes:
-#      - ./files/logstash-indexer/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
-#  ls02-indexer:
-#    image: docker.elastic.co/logstash/logstash:7.7.0
-#    container_name: ls02-indexer
-#    networks:
-#      - elasticsearch
-#    volumes:
-#      - ./files/logstash-indexer/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
-#  ls03-indexer:
-#    image: docker.elastic.co/logstash/logstash:7.7.0
-#    container_name: ls03-indexer
-#    networks:
-#      - elasticsearch
-#    volumes:
-#      - ./files/logstash-indexer/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+  #  ls01-indexer:
+  #    image: docker.elastic.co/logstash/logstash:7.7.0
+  #    container_name: ls01-indexer
+  #    networks:
+  #      - elasticsearch
+  #    volumes:
+  #      - ./files/logstash-indexer/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+  #  ls02-indexer:
+  #    image: docker.elastic.co/logstash/logstash:7.7.0
+  #    container_name: ls02-indexer
+  #    networks:
+  #      - elasticsearch
+  #    volumes:
+  #      - ./files/logstash-indexer/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+  #  ls03-indexer:
+  #    image: docker.elastic.co/logstash/logstash:7.7.0
+  #    container_name: ls03-indexer
+  #    networks:
+  #      - elasticsearch
+  #    volumes:
+  #      - ./files/logstash-indexer/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
   kibana:
     image: docker.elastic.co/kibana/kibana:7.7.0
     container_name: kibana
@@ -686,6 +686,10 @@ services:
     networks:
       - elasticsearch
     depends_on:
+      - ls01-shipper
+      - ls02-shipper
+      - ls03-shipper
+      - httpd02
       - es10
       - es11
       - es12
@@ -705,7 +709,7 @@ services:
       - ls01-shipper
       - ls02-shipper
       - ls03-shipper
-      - httpd01
+      - httpd02
   fb02:
     image: docker.elastic.co/beats/filebeat:7.7.0
     container_name: fb02
@@ -722,7 +726,7 @@ services:
       - ls01-shipper
       - ls02-shipper
       - ls03-shipper
-      - httpd01
+      - httpd02
   httpd01:
     image: httpd:2.4.43
     container_name: httpd01
@@ -739,22 +743,22 @@ services:
       - ./files/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
     networks:
       - elasticsearch
-#  httpd03:
-#    image: httpd:2.4.43
-#    container_name: httpd03
-#    volumes:
-#      - httpd03-volume:/var/log/apache2
-#      - ./files/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
-#    networks:
-#      - elasticsearch
-#  httpd04:
-#    image: httpd:2.4.43
-#    container_name: httpd04
-#    volumes:
-#      - httpd04-volume:/var/log/apache2
-#      - ./files/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
-#    networks:
-#      - elasticsearch
+  httpd03:
+    image: httpd:2.4.43
+    container_name: httpd03
+    volumes:
+      - httpd03-volume:/var/log/apache2
+      - ./files/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
+    networks:
+      - elasticsearch
+  httpd04:
+    image: httpd:2.4.43
+    container_name: httpd04
+    volumes:
+      - httpd04-volume:/var/log/apache2
+      - ./files/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
+    networks:
+      - elasticsearch
 #  fluentd01:
 #    build:
 #      context: ./fluentd
