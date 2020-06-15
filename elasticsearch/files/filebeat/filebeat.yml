@@ -8,6 +8,7 @@ processors:
 output.logstash:
   hosts: "${LOGSTASH_HOSTS}"
   index: "filebeat-%{[agent.version]}-clearing-pdc-%{+yyyy-MM-dd}"
+  loadbalance: true
   indices:
     - index: "filebeat-%{[agent.version]}-clearing-pdc-httpd-%{+yyyy-MM-dd}"
       when.equals:
