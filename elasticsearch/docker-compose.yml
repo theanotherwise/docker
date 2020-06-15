@@ -655,6 +655,81 @@ services:
       - es04
       - es05
       - es06
+  zoo1:
+    image: zookeeper
+    container_name: zoo1
+    environment:
+      MYID: 1
+      SERVERS: zoo1,zoo2,zoo3
+    networks:
+      - elasticsearch
+  zoo2:
+    image: zookeeper
+    container_name: zoo2
+    environment:
+      MYID: 2
+      SERVERS: zoo1,zoo2,zoo3
+    networks:
+      - elasticsearch
+  zoo3:
+    image: zookeeper
+    container_name: zoo3
+    environment:
+      MYID: 3
+      SERVERS: zoo1,zoo2,zoo3
+    networks:
+      - elasticsearch
+  kafka1:
+    image: wurstmeister/kafka
+    container_name: kafka1
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ADVERTISED_PORT: 9092
+      KAFKA_LOG_RETENTION_HOURS: "168"
+      KAFKA_LOG_RETENTION_BYTES: "100000000"
+      KAFKA_ZOOKEEPER_CONNECT:  zoo1:2181,zoo2:2181,zoo3:2181
+      KAFKA_CREATE_TOPICS: "log:3:3"
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'false'
+    networks:
+      - elasticsearch
+    depends_on:
+      - zoo1
+      - zoo2
+      - zoo3
+  kafka2:
+    image: wurstmeister/kafka
+    container_name: kafka2
+    environment:
+      KAFKA_BROKER_ID: 2
+      KAFKA_ADVERTISED_PORT: 9092
+      KAFKA_LOG_RETENTION_HOURS: "168"
+      KAFKA_LOG_RETENTION_BYTES: "100000000"
+      KAFKA_ZOOKEEPER_CONNECT:  zoo1:2181,zoo2:2181,zoo3:2181
+      KAFKA_CREATE_TOPICS: "log:3:3"
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'false'
+    networks:
+      - elasticsearch
+    depends_on:
+      - zoo1
+      - zoo2
+      - zoo3
+  kafka3:
+    image: wurstmeister/kafka
+    container_name: kafka3
+    environment:
+      KAFKA_BROKER_ID: 3
+      KAFKA_ADVERTISED_PORT: 9092
+      KAFKA_LOG_RETENTION_HOURS: "168"
+      KAFKA_LOG_RETENTION_BYTES: "100000000"
+      KAFKA_ZOOKEEPER_CONNECT:  zoo1:2181,zoo2:2181,zoo3:2181
+      KAFKA_CREATE_TOPICS: "log:3:3"
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'false'
+    networks:
+      - elasticsearch
+    depends_on:
+      - zoo1
+      - zoo2
+      - zoo3
   #  ls01-indexer:
   #    image: docker.elastic.co/logstash/logstash:7.7.0
   #    container_name: ls01-indexer
@@ -689,7 +764,6 @@ services:
       - ls01-shipper
       - ls02-shipper
       - ls03-shipper
-      - httpd02
       - es10
       - es11
       - es12
