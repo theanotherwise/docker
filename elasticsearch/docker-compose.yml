@@ -1,4 +1,4 @@
-version: '2.2'
+version: '3.7'
 
 services:
   es01:
@@ -12,15 +12,15 @@ services:
       - node.ingest=false
       - node.ml=false
       - node.transform=false
-      - xpack.transform.enabled=false
+      - xpack.transform.enabled=true
       - xpack.ml.enabled=true
       - node.remote_cluster_client=false
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - xpack.monitoring.collection.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -38,15 +38,15 @@ services:
       - node.ingest=false
       - node.ml=false
       - node.transform=false
-      - xpack.transform.enabled=false
+      - xpack.transform.enabled=true
       - xpack.ml.enabled=true
       - node.remote_cluster_client=false
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - xpack.monitoring.collection.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -64,15 +64,15 @@ services:
       - node.ingest=false
       - node.ml=false
       - node.transform=false
-      - xpack.transform.enabled=false
+      - xpack.transform.enabled=true
       - xpack.ml.enabled=true
       - node.remote_cluster_client=false
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es02,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - xpack.monitoring.collection.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -90,15 +90,15 @@ services:
       - node.ingest=false
       - node.ml=false
       - node.transform=false
-      - xpack.transform.enabled=false
+      - xpack.transform.enabled=true
       - xpack.ml.enabled=true
       - node.remote_cluster_client=false
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es02,es03,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - xpack.monitoring.collection.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -116,15 +116,15 @@ services:
       - node.ingest=false
       - node.ml=false
       - node.transform=false
-      - xpack.transform.enabled=false
+      - xpack.transform.enabled=true
       - xpack.ml.enabled=true
       - node.remote_cluster_client=false
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es02,es03,es04,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - xpack.monitoring.collection.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -142,15 +142,15 @@ services:
       - node.ingest=false
       - node.ml=false
       - node.transform=false
-      - xpack.transform.enabled=false
+      - xpack.transform.enabled=true
       - xpack.ml.enabled=true
       - node.remote_cluster_client=false
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es02,es03,es04,es05,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - xpack.monitoring.collection.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -168,15 +168,15 @@ services:
       - node.ingest=true
       - node.ml=false
       - node.transform=false
-      - xpack.transform.enabled=false
+      - xpack.transform.enabled=true
       - xpack.ml.enabled=true
       - node.remote_cluster_client=false
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - xpack.monitoring.collection.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -194,15 +194,15 @@ services:
       - node.ingest=true
       - node.ml=false
       - node.transform=false
-      - xpack.transform.enabled=false
+      - xpack.transform.enabled=true
       - xpack.ml.enabled=true
       - node.remote_cluster_client=false
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - xpack.monitoring.collection.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -220,15 +220,15 @@ services:
       - node.ingest=true
       - node.ml=false
       - node.transform=false
-      - xpack.transform.enabled=false
+      - xpack.transform.enabled=true
       - xpack.ml.enabled=true
       - node.remote_cluster_client=false
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es10,es11,es12,es13,es14,es15,es16,es17,es18
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - xpack.monitoring.collection.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -246,15 +246,15 @@ services:
       - node.ingest=false
       - node.ml=false
       - node.transform=false
-      - xpack.transform.enabled=false
+      - xpack.transform.enabled=true
       - xpack.ml.enabled=true
       - node.remote_cluster_client=false
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es11,es12,es13,es14,es15,es16,es17,es18
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - xpack.monitoring.collection.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -272,15 +272,15 @@ services:
       - node.ingest=false
       - node.ml=false
       - node.transform=false
-      - xpack.transform.enabled=false
+      - xpack.transform.enabled=true
       - xpack.ml.enabled=true
       - node.remote_cluster_client=false
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es12,es13,es14,es15,es16,es17,es18
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - xpack.monitoring.collection.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -298,15 +298,15 @@ services:
       - node.ingest=false
       - node.ml=false
       - node.transform=false
-      - xpack.transform.enabled=false
+      - xpack.transform.enabled=true
       - xpack.ml.enabled=true
       - node.remote_cluster_client=false
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es13,es14,es15,es16,es17,es18
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - xpack.monitoring.collection.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -328,11 +328,11 @@ services:
       - xpack.ml.enabled=true
       - node.remote_cluster_client=false
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es14,es15,es16,es17,es18
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - xpack.monitoring.collection.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -354,11 +354,11 @@ services:
       - xpack.ml.enabled=true
       - node.remote_cluster_client=false
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es15,es16,es17,es18
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - xpack.monitoring.collection.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -380,11 +380,11 @@ services:
       - xpack.ml.enabled=true
       - node.remote_cluster_client=false
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es16,es17,es18
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - xpack.monitoring.collection.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -401,16 +401,16 @@ services:
       - node.data=false
       - node.ingest=false
       - node.ml=true
-      - node.transform=true
+      - node.transform=false
       - xpack.transform.enabled=true
       - xpack.ml.enabled=true
       - node.remote_cluster_client=false
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es17,es18
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - xpack.monitoring.collection.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -427,16 +427,16 @@ services:
       - node.data=false
       - node.ingest=false
       - node.ml=true
-      - node.transform=true
+      - node.transform=false
       - xpack.transform.enabled=true
       - xpack.ml.enabled=true
       - node.remote_cluster_client=false
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es18
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - xpack.monitoring.collection.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -453,16 +453,94 @@ services:
       - node.data=false
       - node.ingest=false
       - node.ml=true
-      - node.transform=true
+      - node.transform=false
       - xpack.transform.enabled=true
       - xpack.ml.enabled=true
       - node.remote_cluster_client=false
       - cluster.name=es-docker-cluster
-      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
       - cluster.initial_master_nodes=es01,es02,es03
       - bootstrap.memory_lock=true
       - xpack.monitoring.collection.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - elasticsearch
+  es19:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    container_name: es19
+    environment:
+      - node.name=es19
+      - node.master=true
+      - node.voting_only=true
+      - node.data=false
+      - node.ingest=false
+      - node.ml=false
+      - node.transform=false
+      - xpack.transform.enabled=true
+      - xpack.ml.enabled=true
+      - node.remote_cluster_client=false
+      - cluster.name=es-docker-cluster
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
+      - cluster.initial_master_nodes=es01,es02,es03
+      - bootstrap.memory_lock=true
+      - xpack.monitoring.collection.enabled=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - elasticsearch
+  es20:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    container_name: es20
+    environment:
+      - node.name=es20
+      - node.master=true
+      - node.voting_only=true
+      - node.data=false
+      - node.ingest=false
+      - node.ml=false
+      - node.transform=false
+      - xpack.transform.enabled=true
+      - xpack.ml.enabled=true
+      - node.remote_cluster_client=false
+      - cluster.name=es-docker-cluster
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
+      - cluster.initial_master_nodes=es01,es02,es03
+      - bootstrap.memory_lock=true
+      - xpack.monitoring.collection.enabled=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - elasticsearch
+  es21:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    container_name: es21
+    environment:
+      - node.name=es21
+      - node.master=true
+      - node.voting_only=true
+      - node.data=false
+      - node.ingest=false
+      - node.ml=false
+      - node.transform=false
+      - xpack.transform.enabled=true
+      - xpack.ml.enabled=true
+      - node.remote_cluster_client=false
+      - cluster.name=es-docker-cluster
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07,es08,es09,es10,es11,es12,es13,es14,es15,es16,es17,es18,es19,es20,es21
+      - cluster.initial_master_nodes=es01,es02,es03
+      - bootstrap.memory_lock=true
+      - xpack.monitoring.collection.enabled=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
@@ -475,35 +553,33 @@ services:
     environment:
       SERVER_NAME: kibana
       SERVER_HOST: kibana
-      ELASTICSEARCH_HOSTS: http://es10:9200
-      ELASTICSEARCH_HOSTS: http://es11:9200
-      ELASTICSEARCH_HOSTS: http://es12:9200
+      ELASTICSEARCH_HOSTS: '["http://es10:9200", "http://es11:9200", "http://es12:9200"]'
     networks:
       - elasticsearch
   filebeat01:
     image: docker.elastic.co/beats/filebeat:7.7.0
     container_name: filebeat01
     environment:
-      ELASTICSEARCH_HOSTS: http://es10:9200
-      ELASTICSEARCH_HOSTS: http://es11:9200
-      ELASTICSEARCH_HOSTS: http://es12:9200
+      ELASTICSEARCH_HOSTS: '["http://es10:9200", "http://es11:9200", "http://es12:9200"]'
     volumes:
       - httpd01-volume:/var/log/apache2:ro
       - ./files/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
       - ./files/filebeat/modules.d/apache.yml:/usr/share/filebeat/modules.d/apache.yml:ro
+    command: ["--strict.perms=false"]
     networks:
       - elasticsearch
+    configs:
+      - source
   filebeat02:
     image: docker.elastic.co/beats/filebeat:7.7.0
     container_name: filebeat02
     environment:
-      ELASTICSEARCH_HOSTS: http://es10:9200
-      ELASTICSEARCH_HOSTS: http://es11:9200
-      ELASTICSEARCH_HOSTS: http://es12:9200
+      ELASTICSEARCH_HOSTS: '["http://es10:9200", "http://es11:9200", "http://es12:9200"]'
     volumes:
       - httpd02-volume:/var/log/apache2:ro
       - ./files/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
       - ./files/filebeat/modules.d/apache.yml:/usr/share/filebeat/modules.d/apache.yml:ro
+    command: ["--strict.perms=false"]
     networks:
       - elasticsearch
   httpd01:
@@ -522,46 +598,46 @@ services:
       - ./files/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
     networks:
       - elasticsearch
-  httpd03:
-    image: httpd:2.4.43
-    container_name: httpd03
-    volumes:
-      - httpd03-volume:/var/log/apache2
-      - ./files/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
-    networks:
-      - elasticsearch
-  httpd04:
-    image: httpd:2.4.43
-    container_name: httpd04
-    volumes:
-      - httpd04-volume:/var/log/apache2
-      - ./files/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
-    networks:
-      - elasticsearch
-  fluentd01:
-    build:
-      context: ./fluentd
-      args:
-        ELASTICSEARCH_HOSTS1: es04
-        ELASTICSEARCH_HOSTS2: es05
-        ELASTICSEARCH_HOSTS3: es06
-    container_name: fluentd01
-    volumes:
-      - httpd03-volume:/var/log/apache2:ro
-    networks:
-      - elasticsearch
-  fluentd02:
-    build: 
-      context: ./fluentd
-      args:
-        ELASTICSEARCH_HOSTS1: es04
-        ELASTICSEARCH_HOSTS2: es05
-        ELASTICSEARCH_HOSTS3: es06
-    container_name: fluentd02
-    volumes:
-      - httpd04-volume:/var/log/apache2:ro
-    networks:
-      - elasticsearch
+#  httpd03:
+#    image: httpd:2.4.43
+#    container_name: httpd03
+#    volumes:
+#      - httpd03-volume:/var/log/apache2
+#      - ./files/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
+#    networks:
+#      - elasticsearch
+#  httpd04:
+#    image: httpd:2.4.43
+#    container_name: httpd04
+#    volumes:
+#      - httpd04-volume:/var/log/apache2
+#      - ./files/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
+#    networks:
+#      - elasticsearch
+#  fluentd01:
+#    build:
+#      context: ./fluentd
+#      args:
+#        ELASTICSEARCH_HOSTS1: es04
+#        ELASTICSEARCH_HOSTS2: es05
+#        ELASTICSEARCH_HOSTS3: es06
+#    container_name: fluentd01
+#    volumes:
+#      - httpd03-volume:/var/log/apache2:ro
+#    networks:
+#      - elasticsearch
+#  fluentd02:
+#    build:
+#      context: ./fluentd
+#      args:
+#        ELASTICSEARCH_HOSTS1: es04
+#        ELASTICSEARCH_HOSTS2: es05
+#        ELASTICSEARCH_HOSTS3: es06
+#    container_name: fluentd02
+#    volumes:
+#      - httpd04-volume:/var/log/apache2:ro
+#    networks:
+#      - elasticsearch
 networks:
   elasticsearch:
     ipam:
@@ -572,3 +648,7 @@ volumes:
   httpd02-volume:
   httpd03-volume:
   httpd04-volume:
+
+configs:
+  my_config:
+    file: ./my_config.txt

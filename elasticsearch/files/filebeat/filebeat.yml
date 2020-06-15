@@ -6,7 +6,7 @@ processors:
   - add_docker_metadata: ~
 
 output.elasticsearch:
-  hosts: '${ELASTICSEARCH_HOSTS:elasticsearch:9200}'
+  hosts: "${ELASTICSEARCH_HOSTS}"
   indices:
     - index: "filebeat-httpd-access.log-%{+yyyy-MM-dd}"
       when.equals:
