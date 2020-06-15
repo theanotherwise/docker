@@ -5,16 +5,17 @@ filebeat.config.modules:
 processors:
   - add_docker_metadata: ~
 
-output.elasticsearch:
-  hosts: "${ELASTICSEARCH_HOSTS}"
+output.logstash:
+  hosts: "${LOGSTASH_HOSTS}"
+  index: "filebeat-%{[agent.version]}-clearing-pdc-%{+yyyy-MM-dd}"
   indices:
-    - index: "filebeat-httpd-access.log-%{+yyyy-MM-dd}"
+    - index: "filebeat-%{[agent.version]}-clearing-pdc-httpd-%{+yyyy-MM-dd}"
       when.equals:
         event.module: "apache"
 
 setup.template:
-  name: 'filebeat-httpd-access.log'
-  pattern: 'filebeat-httpd-access.log-*'
+  name: 'filebeat'
+  pattern: 'filebeat-*'
   enabled: false
 
 setup.ilm.enabled: false
