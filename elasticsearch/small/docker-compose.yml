@@ -1,0 +1,312 @@
+version: '3.7'
+
+services:
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    container_name: es01
+    environment:
+      - node.name=es01
+      - node.master=true
+      - node.voting_only=false
+      - node.data=false
+      - node.ingest=false
+      - node.ml=false
+      - node.transform=false
+      - xpack.transform.enabled=true
+      - xpack.ml.enabled=true
+      - node.remote_cluster_client=false
+      - cluster.name=cluster
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07
+      - cluster.initial_master_nodes=es01
+      - bootstrap.memory_lock=true
+      - xpack.monitoring.collection.enabled=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - elasticsearch
+  es02:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    container_name: es02
+    environment:
+      - node.name=es02
+      - node.master=false
+      - node.voting_only=false
+      - node.data=true
+      - node.ingest=false
+      - node.ml=false
+      - node.transform=false
+      - xpack.transform.enabled=true
+      - xpack.ml.enabled=true
+      - node.remote_cluster_client=false
+      - cluster.name=cluster
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07
+      - cluster.initial_master_nodes=es01
+      - bootstrap.memory_lock=true
+      - xpack.monitoring.collection.enabled=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - elasticsearch
+    depends_on:
+      - es01
+  es03:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    container_name: es03
+    environment:
+      - node.name=es03
+      - node.master=false
+      - node.voting_only=false
+      - node.data=false
+      - node.ingest=true
+      - node.ml=false
+      - node.transform=false
+      - xpack.transform.enabled=true
+      - xpack.ml.enabled=true
+      - node.remote_cluster_client=false
+      - cluster.name=cluster
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07
+      - cluster.initial_master_nodes=es01
+      - bootstrap.memory_lock=true
+      - xpack.monitoring.collection.enabled=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - elasticsearch
+    depends_on:
+      - es01
+  es04:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    container_name: es04
+    environment:
+      - node.name=es04
+      - node.master=false
+      - node.voting_only=false
+      - node.data=false
+      - node.ingest=false
+      - node.ml=false
+      - node.transform=false
+      - xpack.transform.enabled=true
+      - xpack.ml.enabled=true
+      - node.remote_cluster_client=false
+      - cluster.name=cluster
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07
+      - cluster.initial_master_nodes=es01
+      - bootstrap.memory_lock=true
+      - xpack.monitoring.collection.enabled=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - elasticsearch
+    depends_on:
+      - es01
+  es05:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    container_name: es05
+    environment:
+      - node.name=es05
+      - node.master=false
+      - node.voting_only=false
+      - node.data=false
+      - node.ingest=false
+      - node.ml=false
+      - node.transform=true
+      - xpack.transform.enabled=true
+      - xpack.ml.enabled=true
+      - node.remote_cluster_client=false
+      - cluster.name=cluster
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07
+      - cluster.initial_master_nodes=es01
+      - bootstrap.memory_lock=true
+      - xpack.monitoring.collection.enabled=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - elasticsearch
+    depends_on:
+      - es01
+  es06:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    container_name: es06
+    environment:
+      - node.name=es06
+      - node.master=false
+      - node.voting_only=false
+      - node.data=false
+      - node.ingest=false
+      - node.ml=true
+      - node.transform=false
+      - xpack.transform.enabled=true
+      - xpack.ml.enabled=true
+      - node.remote_cluster_client=false
+      - cluster.name=cluster
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07
+      - cluster.initial_master_nodes=es01
+      - bootstrap.memory_lock=true
+      - xpack.monitoring.collection.enabled=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - elasticsearch
+    depends_on:
+      - es01
+  es07:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.0
+    container_name: es07
+    environment:
+      - node.name=es07
+      - node.master=true
+      - node.voting_only=true
+      - node.data=false
+      - node.ingest=false
+      - node.ml=false
+      - node.transform=false
+      - xpack.transform.enabled=true
+      - xpack.ml.enabled=true
+      - node.remote_cluster_client=false
+      - cluster.name=cluster
+      - discovery.seed_hosts=es01,es02,es03,es04,es05,es06,es07
+      - cluster.initial_master_nodes=es01
+      - bootstrap.memory_lock=true
+      - xpack.monitoring.collection.enabled=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - elasticsearch
+    depends_on:
+      - es01
+  ls01-shipper:
+    image: docker.elastic.co/logstash/logstash:7.7.0
+    container_name: ls01-shipper
+    networks:
+      - elasticsearch
+    volumes:
+      - ./files/logstash-shipper/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ./files/logstash-shipper/pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
+    depends_on:
+      - kafka01
+  ls01-indexer:
+    image: docker.elastic.co/logstash/logstash:7.7.0
+    container_name: ls01-indexer
+    networks:
+      - elasticsearch
+    volumes:
+      - ./files/logstash-indexer/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ./files/logstash-indexer/pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
+    depends_on:
+      - es02
+      - kafka01
+  zoo1:
+    image: zookeeper
+    container_name: zoo1
+    environment:
+      MYID: 1
+      SERVERS: zoo1
+    networks:
+      - elasticsearch
+  kafka01:
+    image: wurstmeister/kafka
+    container_name: kafka01
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_LISTENERS: PLAINTEXT://kafka01:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka01:9092
+      KAFKA_ADVERTISED_HOST_NAME: kafka01
+      KAFKA_ADVERTISED_PORT: 9092
+      KAFKA_LOG_RETENTION_HOURS: "168"
+      KAFKA_LOG_RETENTION_BYTES: "100000000"
+      KAFKA_ZOOKEEPER_CONNECT:  zoo1:2181
+      KAFKA_CREATE_TOPICS: "log:3:3"
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+    networks:
+      - elasticsearch
+    volumes:
+      - kafka01-volume:/kafka
+    depends_on:
+      - zoo1
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.7.0
+    container_name: kibana
+    environment:
+      SERVER_NAME: kibana
+      SERVER_HOST: kibana
+      ELASTICSEARCH_HOSTS: '["http://es04:9200"]'
+    networks:
+      - elasticsearch
+    depends_on:
+      - es04
+  fb01:
+    image: docker.elastic.co/beats/filebeat:7.7.0
+    container_name: fb01
+    environment:
+      LOGSTASH_HOSTS: '["ls01-shipper:5044"]'
+    volumes:
+      - ./files/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - ./files/filebeat/modules.d/apache.yml:/usr/share/filebeat/modules.d/apache.yml:ro
+      - httpd01-volume:/var/log/apache2:ro
+    command: ["--strict.perms=false"]
+    networks:
+      - elasticsearch
+    depends_on:
+      - ls01-shipper
+      - httpd01
+  httpd01:
+    image: httpd:2.4.43
+    container_name: httpd01
+    volumes:
+      - httpd01-volume:/var/log/apache2
+      - ./files/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
+    networks:
+      - elasticsearch
+#  fluentd01:
+#    build:
+#      context: ./fluentd
+#      args:
+#        ELASTICSEARCH_HOSTS1: es04
+#        ELASTICSEARCH_HOSTS2: es05
+#        ELASTICSEARCH_HOSTS3: es06
+#    container_name: fluentd01
+#    volumes:
+#      - httpd03-volume:/var/log/apache2:ro
+#    networks:
+#      - elasticsearch
+#  fluentd02:
+#    build:
+#      context: ./fluentd
+#      args:
+#        ELASTICSEARCH_HOSTS1: es04
+#        ELASTICSEARCH_HOSTS2: es05
+#        ELASTICSEARCH_HOSTS3: es06
+#    container_name: fluentd02
+#    volumes:
+#      - httpd04-volume:/var/log/apache2:ro
+#    networks:
+#      - elasticsearch
+networks:
+  elasticsearch:
+    ipam:
+      config:
+        - subnet: 172.20.15.0/24
+volumes:
+  httpd01-volume:
+  kafka01-volume:
