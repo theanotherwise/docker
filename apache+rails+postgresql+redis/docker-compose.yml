@@ -1,0 +1,45 @@
+version: '3.7'
+
+services:
+#  seems-legal-frontend:
+#    build:
+#      context: ./frontend
+#    image: seems-legal-frontend
+#    container_name: seems-legal-frontend
+#    networks:
+#      - seems-legal
+#    depends_on:
+#      - seems-legal-application
+  seems-legal-application:
+    build:
+      context: ./application
+    image: seems-legal-application
+    container_name: seems-legal-application
+    ports:
+      - "80:8080"
+    networks:
+      - seems-legal
+#    depends_on:
+#      - seems-legal-database
+#      - seems-legal-redis
+#  seems-legal-database:
+#    build:
+#      context: ./database
+#    image: seems-legal-database
+#    container_name: seems-legal-database
+#    networks:
+#      - seems-legal
+#  seems-legal-redis:
+#    build:
+#      context: ./redis
+#    image: seems-legal-redis
+#    container_name: seems-legal-redis
+#    networks:
+#      - seems-legal
+networks:
+  seems-legal:
+    ipam:
+      config:
+        - subnet: 172.20.16.0/24
+volumes:
+  httpd:
