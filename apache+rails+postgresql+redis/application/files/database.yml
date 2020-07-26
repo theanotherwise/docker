@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: utf-8
+  host: database
+  port: 5432
+  database: application
+  username: application
+  password: application
+  schema_search_path: "application"
+  pool: 100
+  checkout_timeout: 5
+  idle_timeout: 10
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
