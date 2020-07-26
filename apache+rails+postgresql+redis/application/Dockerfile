@@ -7,7 +7,8 @@ RUN apt-get update -y && \
     apt-get dist-upgrade -y && \
     apt-get install -y xz-utils rsync make gcc g++ openssl zlib1g zlib1g-dev build-essential  libssl-dev libpq-dev && \
     apt-get install -y libmysqlclient-dev libyaml-dev curl git-core && \
-    apt-get install -y build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev libsqlite3-dev tzdata
+    apt-get install -y build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev libsqlite3-dev tzdata && \
+    apt-get install -y libqdbm++-dev libqdbm-dev libgdbm-dev
 
 RUN rm -rf /var/cache/apt/* && \
     rm -rf /var/lib/apt/lists/* && \
