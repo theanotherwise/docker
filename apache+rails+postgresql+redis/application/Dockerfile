@@ -79,4 +79,8 @@ COPY files/database.yml config/database.yml
 
 RUN pwd && cat config/database.yml | grep -Ev "^[ \t]*#|^$"
 
+RUN rm -f /app/project/tmp/pids/server.pid
+
+COPY files/config/environments/development.rb config/environments/development.rb
+
 CMD ["rails", "server", "--binding=application", "--port=8080", "--environment=development", "--using=puma"]
