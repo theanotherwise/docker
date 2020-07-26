@@ -66,11 +66,15 @@ RUN tar -xvf ruby-${RUBY_VERSION}.tar.gz && \
 
 ENV PATH=/app/ruby/latest/bin:$PATH
 
+RUN gem update --system
+RUN gem update
+RUN gem cleanup
+
 RUN gem install rails sqlite3 --no-document
 
 RUN bundle config --local disable_platform_warnings true
 
-RUN rails new project
+RUN rails new project --database=postgresql
 
 WORKDIR /app/project
 
