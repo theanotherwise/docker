@@ -1,12 +1,12 @@
 default: &default
   adapter: postgresql
   encoding: utf-8
-  host: database
+  host: postgresql01
   port: 5432
-  database: application
-  username: application
-  password: application
-  schema_search_path: "application"
+  database: rails01
+  username: rails01
+  password: rails01
+  schema_search_path: "rails01"
   pool: 100
   checkout_timeout: 5
   idle_timeout: 10

@@ -21,7 +21,7 @@ WORKDIR /app
 
 ENV REDIS_VERSION=6.0.6
 
-COPY archives/redis-${REDIS_VERSION}.tar.gz .
+COPY ./archives/redis-${REDIS_VERSION}.tar.gz .
 
 RUN mkdir /app/redis && \
     mkdir /app/redis/${REDIS_VERSION} && \
@@ -29,12 +29,15 @@ RUN mkdir /app/redis && \
     mkdir /app/redis/${REDIS_VERSION}/etc && \
     ln -s /app/redis/${REDIS_VERSION} /app/redis/latest
 
-RUN tar -xvf redis-${REDIS_VERSION}.tar.gz && cd redis-${REDIS_VERSION} && make && \
-    cp src/redis-server /app/redis/${REDIS_VERSION}/bin && cp src/redis-cli /app/redis/bin && \
-    cp src/redis-sentinel /app/redis/${REDIS_VERSION}/bin && cp src/redis-benchmark /app/redis/${REDIS_VERSION}/bin && \
-    cp src/redis-check-rdb /app/redis/${REDIS_VERSION}/bin && cp src/redis-check-aof /app/redis/${REDIS_VERSION}/bin
+RUN tar -xvf redis-${REDIS_VERSION}.tar.gz && cd redis-${REDIS_VERSION} && make
 
-COPY files/redis.conf /app/redis/${REDIS_VERSION}/etc
+RUN cd redis-${REDIS_VERSION} && \
+    cp src/redis-server /app/redis/${REDIS_VERSION}/bin && cp src/redis-cli /app/redis/${REDIS_VERSION}/bin && \
+    cp src/redis-sentinel /app/redis/${REDIS_VERSION}/bin && cp src/redis-benchmark /app/redis/${REDIS_VERSION}/bin && \
+    cp src/redis-check-rdb /app/redis/${REDIS_VERSION}/bin && cp src/redis-check-aof /app/redis/${REDIS_VERSION}/bin && \
+    rm -rf redis-${REDIS_VERSION} redis-${REDIS_VERSION}.tar.gz
+
+COPY ./files/redis.conf /app/redis/${REDIS_VERSION}/etc
 
 ENV PATH=/app/redis/latest/bin:$PATH
 

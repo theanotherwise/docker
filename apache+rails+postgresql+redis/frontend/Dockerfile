@@ -16,9 +16,9 @@ RUN rm -rf /var/cache/apt/* && \
 
 RUN a2dissite 000-default.conf
 
-COPY files/frontend.conf /etc/apache2/sites-available
+COPY ./files/frontend01.conf /etc/apache2/sites-available
 
-RUN a2ensite frontend.conf
+RUN a2ensite frontend01.conf
 RUN a2enmod proxy
 RUN a2enmod proxy_http
 

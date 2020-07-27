@@ -17,20 +17,20 @@ RUN rm -rf /var/cache/apt/* && \
 USER postgres
 
 RUN /etc/init.d/postgresql start && \
-     psql -c 'CREATE ROLE "application";' && \
-     psql -c 'CREATE DATABASE "application";' && \
-     psql -c 'ALTER DATABASE "application" OWNER TO "application";' && \
-     psql -c 'GRANT ALL PRIVILEGES ON DATABASE "application" TO "application";' && \
-     psql -c 'ALTER ROLE "application" LOGIN;' && \
-     psql -c "ALTER ROLE \"application\" PASSWORD 'application';" && \
-     psql -c 'ALTER DATABASE "application" SET search_path="application";' && \
-     psql -d 'application' -c 'DROP SCHEMA "public";' && \
-     psql -d 'application' -c 'CREATE SCHEMA "application"'\ && \
-     psql -d 'application' -c 'ALTER SCHEMA "application" OWNER TO "application";' && \
-     psql -d 'application' -c 'GRANT ALL PRIVILEGES ON SCHEMA "application" TO "application";'
+     psql -c 'CREATE ROLE "rails01";' && \
+     psql -c 'CREATE DATABASE "rails01";' && \
+     psql -c 'ALTER DATABASE "rails01" OWNER TO "rails01";' && \
+     psql -c 'GRANT ALL PRIVILEGES ON DATABASE "rails01" TO "rails01";' && \
+     psql -c 'ALTER ROLE "rails01" LOGIN;' && \
+     psql -c "ALTER ROLE \"rails01\" PASSWORD 'rails01';" && \
+     psql -c 'ALTER DATABASE "rails01" SET search_path="rails01";' && \
+     psql -d 'rails01' -c 'DROP SCHEMA "public";' && \
+     psql -d 'rails01' -c 'CREATE SCHEMA "rails01"'\ && \
+     psql -d 'rails01' -c 'ALTER SCHEMA "rails01" OWNER TO "rails01";' && \
+     psql -d 'rails01' -c 'GRANT ALL PRIVILEGES ON SCHEMA "rails01" TO "rails01";'
 
-RUN sed -i "s/#listen_addresses = 'localhost'/listen_addresses = 'database'/g" /etc/postgresql/12/main/postgresql.conf
+RUN sed -i "s/#listen_addresses = 'localhost'/listen_addresses = 'postgresql01'/g" /etc/postgresql/12/main/postgresql.conf
 
-COPY files/pg_hba.conf /etc/postgresql/12/main/pg_hba.conf
+COPY ./files/pg_hba.conf /etc/postgresql/12/main/pg_hba.conf
 
 CMD ["/usr/lib/postgresql/12/bin/postgres", "-D", "/var/lib/postgresql/12/main", "-c", "config_file=/etc/postgresql/12/main/postgresql.conf"]
