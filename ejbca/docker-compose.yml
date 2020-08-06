@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   ejbca:
-    image: primekey/ejbca-ce
+    image: primekey/ejbca-ce:latest
     container_name: ejbca
     environment:
       HOSTNAME: ejbca
@@ -16,7 +16,7 @@ services:
     networks:
       - ejbca
   postgresql:
-    image: postgres
+    image: postgres:latest
     container_name: postgresql
     environment:
       POSTGRES_PASSWORD: ejbca
