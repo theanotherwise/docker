@@ -1,42 +1,42 @@
 version: '3.7'
 
 services:
-  httpd:
+  httpd1:
     image: httpd:2.4.46
-    container_name: http
+    container_name: httpd1
     volumes:
-      - ./files/httpd/server.crt.pem:/etc/httpd/ssl/server.crt.pem:ro
-      - ./files/httpd/server.key.pem:/etc/httpd/ssl/server.key.pem:ro
-      - ./files/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
-    networks:
-      - ejbca
-  ejbca0:
-    image: primekey/ejbca-ce:6.15.2.6
-    container_name: ejbca0
-    environment:
-      HOSTNAME: ejbca0
-      TLS_SETUP_ENABLED: simple
-      PROXY_AJP_BIND: 0.0.0.0
-      DATABASE_USER: ejbca
-      DATABASE_PASSWORD: ejbca
-      DATABASE_JDBC_URL: jdbc:postgresql://ejbca-postgres/ejbca
+      - ./files/httpd1/server.crt.pem:/etc/httpd/ssl/server.crt.pem:ro
+      - ./files/httpd1/server.key.pem:/etc/httpd/ssl/server.key.pem:ro
+      - ./files/httpd1/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
     networks:
       - ejbca
   ejbca1:
     image: primekey/ejbca-ce:6.15.2.6
     container_name: ejbca1
     environment:
+      HOSTNAME: ejbca0
+      TLS_SETUP_ENABLED: simple
+      PROXY_AJP_BIND: 0.0.0.0
+      DATABASE_USER: ejbca
+      DATABASE_PASSWORD: ejbca
+      DATABASE_JDBC_URL: jdbc:postgresql://postgres1/ejbca
+    networks:
+      - ejbca
+  ejbca2:
+    image: primekey/ejbca-ce:6.15.2.6
+    container_name: ejbca2
+    environment:
       HOSTNAME: ejbca1
       TLS_SETUP_ENABLED: simple
       PROXY_AJP_BIND: 0.0.0.0
       DATABASE_USER: ejbca
       DATABASE_PASSWORD: ejbca
-      DATABASE_JDBC_URL: jdbc:postgresql://ejbca-postgres/ejbca
+      DATABASE_JDBC_URL: jdbc:postgresql://postgres1/ejbca
     networks:
       - ejbca
-  ejbca-postgres:
+  postgres1:
     image: postgres:12.3
-    container_name: ejbca-postgres
+    container_name: postgres1
     environment:
       POSTGRES_PASSWORD: ejbca
       POSTGRES_USER: ejbca
@@ -45,8 +45,8 @@ services:
     networks:
       - ejbca
     depends_on:
-      - ejbca0
       - ejbca1
+      - ejbca2
 networks:
   ejbca:
     ipam:

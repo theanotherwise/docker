@@ -701,7 +701,7 @@ services:
       - kafka02
       - kafka03
   zoo1:
-    image: zookeeper
+    image: zookeeper:3.6.1
     container_name: zoo1
     environment:
       MYID: 1
@@ -709,7 +709,7 @@ services:
     networks:
       - elasticsearch
   zoo2:
-    image: zookeeper
+    image: zookeeper:3.6.1
     container_name: zoo2
     environment:
       MYID: 2
@@ -717,7 +717,7 @@ services:
     networks:
       - elasticsearch
   zoo3:
-    image: zookeeper
+    image: zookeeper:3.6.1
     container_name: zoo3
     environment:
       MYID: 3
@@ -725,7 +725,7 @@ services:
     networks:
       - elasticsearch
   kafka01:
-    image: wurstmeister/kafka
+    image: wurstmeister/kafka:2.12-2.5.0
     container_name: kafka01
     environment:
       KAFKA_BROKER_ID: 1
@@ -747,7 +747,7 @@ services:
       - zoo2
       - zoo3
   kafka02:
-    image: wurstmeister/kafka
+    image: wurstmeister/kafka:2.12-2.5.0
     container_name: kafka02
     environment:
       KAFKA_BROKER_ID: 2
@@ -769,7 +769,7 @@ services:
       - zoo2
       - zoo3
   kafka03:
-    image: wurstmeister/kafka
+    image: wurstmeister/kafka:2.12-2.5.0
     container_name: kafka03
     environment:
       KAFKA_BROKER_ID: 3
@@ -878,30 +878,6 @@ services:
       - ./files/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
     networks:
       - elasticsearch
-#  fluentd01:
-#    build:
-#      context: ./fluentd
-#      args:
-#        ELASTICSEARCH_HOSTS1: es04
-#        ELASTICSEARCH_HOSTS2: es05
-#        ELASTICSEARCH_HOSTS3: es06
-#    container_name: fluentd01
-#    volumes:
-#      - httpd03-volume:/var/log/apache2:ro
-#    networks:
-#      - elasticsearch
-#  fluentd02:
-#    build:
-#      context: ./fluentd
-#      args:
-#        ELASTICSEARCH_HOSTS1: es04
-#        ELASTICSEARCH_HOSTS2: es05
-#        ELASTICSEARCH_HOSTS3: es06
-#    container_name: fluentd02
-#    volumes:
-#      - httpd04-volume:/var/log/apache2:ro
-#    networks:
-#      - elasticsearch
 networks:
   elasticsearch:
     ipam:
