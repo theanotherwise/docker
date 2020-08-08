@@ -1,14 +1,26 @@
 # EJBCA
 
+## 
+
+```bash
+openssl req -newkey rsa:4096 \
+            -x509 \
+            -sha256 \
+            -days 3650 \
+            -nodes \
+            -out server.crt \
+            -keyout server.key
+```
+
 ## Backup/restore `postgres` database
 
-### Dump 
+### Exmport 
 
 #### Globals
 ```bash
 docker exec -i --user postgres `docker ps -a | grep -i postgres | awk '{print $1}'` \
        pg_dumpall --username ejbca \
-                  --globals-only 
+                  --globals-only \
                   --encoding 'UTF-8' \
                   --clean --no-owner --no-privileges --verbose > globals.sql
 ```
@@ -25,7 +37,7 @@ docker exec -i --user postgres `docker ps -a | grep -i postgres | awk '{print $1
                --clean --no-owner --no-privileges --verbose > ejbca.sql
 ```
 
-### Restore
+### Import
 
 #### Database
 ```bash
