@@ -1,6 +1,6 @@
 # EJBCA
 
-## 
+## Generate certificates for httpd
 
 ```bash
 openssl req -newkey rsa:4096 \
