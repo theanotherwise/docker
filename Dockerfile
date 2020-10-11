@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:lts-jdk11
+FROM openjdk:11
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV DOCKER_VERSION=19.03.13
